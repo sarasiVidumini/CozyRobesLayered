@@ -1,4 +1,4 @@
-package lk.ijse.cozy_robes_leyerd.dao.cart.Impl;
+package lk.ijse.cozy_robes_leyerd.dao.Impl;
 
 import lk.ijse.cozy_robes_leyerd.dto.SupplierDTO;
 import lk.ijse.cozy_robes_leyerd.util.SQLUtil;

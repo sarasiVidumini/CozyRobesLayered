@@ -1,6 +1,6 @@
-package lk.ijse.cozy_robes_leyerd.dao.cart.Impl;
+package lk.ijse.cozy_robes_leyerd.dao.Impl;
 
-import lk.ijse.cozy_robes_leyerd.dao.cart.CustomerDAO;
+import lk.ijse.cozy_robes_leyerd.dao.custom.CustomerDAO;
 import lk.ijse.cozy_robes_leyerd.dto.CustomerDTO;
 import lk.ijse.cozy_robes_leyerd.entity.Customer;
 import lk.ijse.cozy_robes_leyerd.util.SQLUtil;
@@ -24,7 +24,7 @@ public class CustomerDAOImpl implements CustomerDAO {
         return tableCharacter + "001";
     }
 
-    public boolean save(CustomerDTO customerDto) throws SQLException {
+    public boolean save(Customer customerDto) throws SQLException {
         return SQLUtil.execute(
                 "insert into customer values (?,?,?,?)",
                 customerDto.getCustomerId(),
@@ -38,12 +38,12 @@ public class CustomerDAOImpl implements CustomerDAO {
         ResultSet resultSet = SQLUtil.execute("select * from customer");
         ArrayList<Customer> customers = new ArrayList<>();
         while (resultSet.next()) {
-            customers.add(new Customer(resultSet.getString("id") , resultSet.getString("name") , resultSet.getString("phone") , resultSet.getString("email")));
+            customers.add(new Customer(resultSet.getString("customer_id") , resultSet.getString("name") , resultSet.getString("phone") , resultSet.getString("email")));
         }
         return customers;
     }
 
-    public boolean update(CustomerDTO customerDto) throws SQLException {
+    public boolean update(Customer customerDto) throws SQLException {
         return SQLUtil.execute(
                 "update customer set name=? , phone =? , email=? where customer_id= ?",
                 customerDto.getName(),
@@ -61,13 +61,14 @@ public class CustomerDAOImpl implements CustomerDAO {
         );
     }
 
-    public ArrayList<CustomerDTO> search(String search) throws SQLException {
-        ArrayList<CustomerDTO> dtos = new ArrayList<>();
-        String sql = "SELECT  * from customer where customer_id LIKE ? OR name LIKE ? OR phone LIKE ? OR email LIKE ?";
+    public ArrayList<Customer> search(String search) throws SQLException {
+        ArrayList<Customer> dtos = new ArrayList<>();
+        String sql = "SELECT * FROM customer WHERE customer_id LIKE ? OR name LIKE ? OR phone LIKE ? OR email LIKE ?";
         String pattern = "%" + search + "%";
-        ResultSet resultSet = SQLUtil.execute(sql, pattern ,pattern, pattern, pattern);
+
+        ResultSet resultSet = SQLUtil.execute(sql, pattern, pattern, pattern, pattern);
         while (resultSet.next()) {
-            CustomerDTO dto = new CustomerDTO(
+            Customer dto = new Customer(
                     resultSet.getString(1),
                     resultSet.getString(2),
                     resultSet.getString(3),
@@ -77,6 +78,7 @@ public class CustomerDAOImpl implements CustomerDAO {
         }
         return dtos;
     }
+
 
 
 }

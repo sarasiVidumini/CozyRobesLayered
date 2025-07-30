@@ -8,6 +8,7 @@ module lk.ijse.cozy_robes_leyerd {
     requires java.mail;
     requires activation;
     requires net.sf.jasperreports.core;
+    requires commons.beanutils;
 
     opens lk.ijse.cozy_robes_leyerd.controller to javafx.fxml;
     opens lk.ijse.cozy_robes_leyerd to javafx.fxml;

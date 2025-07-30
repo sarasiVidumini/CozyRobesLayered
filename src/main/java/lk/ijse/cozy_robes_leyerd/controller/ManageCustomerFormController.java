@@ -10,9 +10,12 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import lk.ijse.cozy_robes_leyerd.bo.BOFactory;
+import lk.ijse.cozy_robes_leyerd.bo.custom.CustomerBO;
 import lk.ijse.cozy_robes_leyerd.dto.CustomerDTO;
+import lk.ijse.cozy_robes_leyerd.entity.Customer;
 import lk.ijse.cozy_robes_leyerd.viewTm.CustomerTM;
-import lk.ijse.cozy_robes_leyerd.dao.cart.Impl.CustomerDAOImpl;
+import lk.ijse.cozy_robes_leyerd.dao.Impl.CustomerDAOImpl;
 
 import java.io.IOException;
 import java.net.URL;
@@ -40,7 +43,9 @@ public class ManageCustomerFormController implements Initializable {
     public Button btnReset;
     public TextField txtSearch;
 
-    private final CustomerDAOImpl customerDAO = new CustomerDAOImpl();
+//   private final CustomerDAOImpl customerDAO = new CustomerDAOImpl();
+
+    private CustomerBO customerBO = (CustomerBO) BOFactory.getInstance().getBO(BOFactory.BOTypes.CUSTOMER);
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -63,7 +68,7 @@ public class ManageCustomerFormController implements Initializable {
     }
 
     private void loadTableData() throws Exception {
-        List<CustomerDTO> customers = customerDAO.getAll();
+        List<CustomerDTO> customers = customerBO.getAll();
 
         if (customers != null) {
             List<CustomerTM> tmList = customers.stream()
@@ -75,7 +80,7 @@ public class ManageCustomerFormController implements Initializable {
     }
 
     private void loadNextId() throws Exception {
-        String nextId = customerDAO.getNextId();
+        String nextId = customerBO.getNextId();
         lblCustomerId.setText(nextId);
     }
 
@@ -122,7 +127,7 @@ public class ManageCustomerFormController implements Initializable {
         CustomerDTO customerDto = new CustomerDTO(customerId, name, phone, email);
 
         try {
-            boolean isSaved = customerDAO.save(customerDto);
+            boolean isSaved = customerBO.save(customerDto);
             if (isSaved) {
                 resetPage();
                 new Alert(Alert.AlertType.INFORMATION, "Saved successfully!").show();
@@ -141,7 +146,7 @@ public class ManageCustomerFormController implements Initializable {
         if (response.isPresent() && response.get() == ButtonType.YES) {
             String customerId = lblCustomerId.getText();
             try {
-                boolean isDeleted = customerDAO.delete(customerId);
+                boolean isDeleted = customerBO.delete(customerId);
                 if (isDeleted) {
                     resetPage();
                     new Alert(Alert.AlertType.INFORMATION, "Deleted successfully!").show();
@@ -179,7 +184,7 @@ public class ManageCustomerFormController implements Initializable {
         CustomerDTO customerDto = new CustomerDTO(customerId, name, phone, email);
 
         try {
-            boolean isUpdated = customerDAO.update(customerDto);
+            boolean isUpdated = customerBO.update(customerDto);
             if (isUpdated) {
                 resetPage();
                 new Alert(Alert.AlertType.INFORMATION, "Updated successfully!").show();
@@ -227,7 +232,8 @@ public class ManageCustomerFormController implements Initializable {
             }
         } else {
             try {
-                List<CustomerDTO> customerList = customerDAO.search(search);
+                List<CustomerDTO> customerList = customerBO.search(search);
+
                 List<CustomerTM> tmList = customerList.stream()
                         .map(dto -> new CustomerTM(dto.getCustomerId(), dto.getName(), dto.getPhone(), dto.getEmail()))
                         .collect(Collectors.toList());

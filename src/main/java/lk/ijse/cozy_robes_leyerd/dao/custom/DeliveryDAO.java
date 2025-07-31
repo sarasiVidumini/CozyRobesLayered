@@ -1,4 +1,8 @@
 package lk.ijse.cozy_robes_leyerd.dao.custom;
 
-public interface DeliveryDAO {
+import lk.ijse.cozy_robes_leyerd.dao.CrudDAO;
+import lk.ijse.cozy_robes_leyerd.entity.Delivery;
+
+public interface DeliveryDAO extends CrudDAO<Delivery> {
+
 }

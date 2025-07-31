@@ -43,7 +43,6 @@ public class DeliveryBOImpl implements DeliveryBO {
     @Override
     public ArrayList<DeliveryDTO> search(String search) throws SQLException {
         ArrayList<Delivery> deliveries = deliveryDAO.search(search);
-
         ArrayList<DeliveryDTO> dtos = new ArrayList<>();
         for (Delivery d : deliveries) {
             dtos.add(new DeliveryDTO(d.getDeliveryId(), d.getOrderId(), d.getAddress(), d.getStatus()));

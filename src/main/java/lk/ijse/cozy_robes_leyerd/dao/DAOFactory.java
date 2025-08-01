@@ -1,9 +1,6 @@
 package lk.ijse.cozy_robes_leyerd.dao;
 
-import lk.ijse.cozy_robes_leyerd.dao.Impl.CustomerDAOImpl;
-import lk.ijse.cozy_robes_leyerd.dao.Impl.DeliveryDAOImpl;
-import lk.ijse.cozy_robes_leyerd.dao.Impl.EmployeeDAOImpl;
-import lk.ijse.cozy_robes_leyerd.dao.Impl.MaintenanceDAOImpl;
+import lk.ijse.cozy_robes_leyerd.dao.Impl.*;
 import lk.ijse.cozy_robes_leyerd.dao.custom.CustomerDAO;
 import org.apache.commons.beanutils.PropertyUtilsBean;
 
@@ -16,7 +13,7 @@ public class DAOFactory {
     }
 
     public enum DAOTypes{
-        CUSTOMER , DELIVERY , EMPLOYEE , MAINTENANCE;
+        CUSTOMER , DELIVERY , EMPLOYEE , MAINTENANCE , MATERIALINVENTORY;
     }
 
     public SuperDAO getDAO(DAOTypes daoType) {
@@ -29,6 +26,8 @@ public class DAOFactory {
                     return new EmployeeDAOImpl();
                 case MAINTENANCE:
                     return new MaintenanceDAOImpl();
+                case MATERIALINVENTORY:
+                    return new MaterialInventoryDAOImpl();
                 default:
                     return null;
         }

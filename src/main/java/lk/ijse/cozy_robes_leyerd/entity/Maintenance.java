@@ -1,4 +1,4 @@
-package lk.ijse.cozy_robes_leyerd.viewTm;
+package lk.ijse.cozy_robes_leyerd.entity;
 
 import lombok.*;
 
@@ -7,16 +7,16 @@ import java.util.Date;
 @Getter
 @Setter
 @ToString
-@NoArgsConstructor
 @AllArgsConstructor
 @Builder
-
-public class MaintenanceTM {
+public class Maintenance {
     private String maintenanceId;
     private String materialId;
     private String sectionId;
     private Date maintenanceDate;
     private String maintenanceStatus;
     private double cost;
+
+    public Maintenance(){}
 
 }

@@ -1,14 +1,16 @@
 package lk.ijse.cozy_robes_leyerd.dao.Impl;
 
+import lk.ijse.cozy_robes_leyerd.dao.custom.QuickcheckDAO;
 import lk.ijse.cozy_robes_leyerd.dto.QuickcheckDTO;
+import lk.ijse.cozy_robes_leyerd.entity.Quickcheck;
 import lk.ijse.cozy_robes_leyerd.util.SQLUtil;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-public class QuickcheckImpl {
-    public String getNextCheckId() throws SQLException {
+public class QuickcheckDAOImpl implements QuickcheckDAO {
+    public String getNextId() throws SQLException {
         ResultSet resultSet = SQLUtil.execute("SELECT check_id FROM quick_check ORDER BY check_id DESC LIMIT 1");
         String tableCharacter = "QC";
         if (resultSet.next()) {
@@ -23,7 +25,7 @@ public class QuickcheckImpl {
     }
 
 
-    public boolean saveQuickcheck(QuickcheckDTO quickcheckDto) throws SQLException {
+    public boolean save(Quickcheck quickcheckDto) throws SQLException {
         return SQLUtil.execute(
                 "insert into quick_check values (?,?,?,?)",
                 quickcheckDto.getCheckId(),
@@ -33,23 +35,17 @@ public class QuickcheckImpl {
         );
     }
 
-    public ArrayList<QuickcheckDTO> getAllQuickcheck() throws SQLException {
+    public ArrayList<Quickcheck> getAll() throws SQLException {
         ResultSet resultSet = SQLUtil.execute("select * from quick_check");
-        ArrayList<QuickcheckDTO> quickcheckDtoArrayList = new ArrayList<>();
+        ArrayList<Quickcheck> quickcheckList = new ArrayList<>();
         while (resultSet.next()) {
-            QuickcheckDTO quickcheckDto = new QuickcheckDTO(
-                    resultSet.getString(1),
-                    resultSet.getString(2),
-                    resultSet.getString(3),
-                    resultSet.getString(4)
-            );
-            quickcheckDtoArrayList.add(quickcheckDto);
+           quickcheckList.add(new Quickcheck(resultSet.getString(1), resultSet.getString(2), resultSet.getString(3), resultSet.getString(4)));
         }
-        return quickcheckDtoArrayList;
+        return quickcheckList;
     }
 
 
-    public boolean  updateQuickCheck(QuickcheckDTO quickcheckDto) throws SQLException {
+    public boolean  update(Quickcheck quickcheckDto) throws SQLException {
         return SQLUtil.execute(
                 "update quick_check set maintenance_id = ? , check_type = ? , status = ? where check_id = ?",
                 quickcheckDto.getMaintenanceId(),
@@ -59,37 +55,22 @@ public class QuickcheckImpl {
         );
     }
 
-    public boolean deleteQuickcheck(String check_id) throws SQLException {
+    public boolean delete(String check_id) throws SQLException {
         return SQLUtil.execute(
                 "delete from quick_check where check_id = ?",
                 check_id
         );
     }
 
-    public ArrayList<QuickcheckDTO> searchQuickcheck(String search) throws SQLException {
-        ArrayList<QuickcheckDTO> dtos = new ArrayList<>();
+    public ArrayList<Quickcheck> search(String search) throws SQLException {
+        ArrayList<Quickcheck> dtos = new ArrayList<>();
         String sql = "select * from quick_check where check_id LIKE ? OR maintenance_id LIKE ? OR check_type LIKE ? OR status LIKE ? ";
         String pattern = "%" + search + "%";
         ResultSet resultSet = SQLUtil.execute(sql, pattern,pattern,pattern,pattern);
         while (resultSet.next()) {
-            QuickcheckDTO dto = new QuickcheckDTO(
-                    resultSet.getString(1),
-                    resultSet.getString(2),
-                    resultSet.getString(3),
-                    resultSet.getString(4)
-            );
-            dtos.add(dto);
+            dtos.add(new Quickcheck(resultSet.getString(1), resultSet.getString(2), resultSet.getString(3), resultSet.getString(4)));
         }
         return dtos;
     }
 
-    public ArrayList<String> getAllCheckIds() throws SQLException {
-        ResultSet resultSet = SQLUtil.execute("select check_id from quick_check");
-        ArrayList<String> list = new ArrayList<>();
-        while (resultSet.next()) {
-            String id = resultSet.getString(1);
-            list.add(id);
-        }
-        return list;
-    }
 }

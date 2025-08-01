@@ -8,7 +8,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 public class OrderDetailsDAOImpl {
-    public String getNextOrderDetailId() throws SQLException {
+    public String getNextId() throws SQLException {
         ResultSet resultSet = SQLUtil.execute("select orderDetail_id from order_details order by orderDetail_id desc limit 1");
         String tableCharacter = "OD";
 
@@ -24,7 +24,7 @@ public class OrderDetailsDAOImpl {
         return tableCharacter + "001";
     }
 
-    public boolean saveOrderDetails(OrderDetailsDTO orderDetailsDto) throws SQLException {
+    public boolean save(OrderDetailsDTO orderDetailsDto) throws SQLException {
         return SQLUtil.execute(
                 "insert into order_details values(?,?,?,?,?)",
                 orderDetailsDto.getOrderDetailId(),
@@ -35,7 +35,7 @@ public class OrderDetailsDAOImpl {
         );
     }
 
-    public boolean updateOrderDetails(OrderDetailsDTO orderDetailsDto) throws SQLException {
+    public boolean update(OrderDetailsDTO orderDetailsDto) throws SQLException {
         return SQLUtil.execute(
                 "update order_details SET order_id = ? , product_id =? , quantity = ? , price_at_purchase = ?  where orderDetail_id = ?",
                 orderDetailsDto.getOrderId(),

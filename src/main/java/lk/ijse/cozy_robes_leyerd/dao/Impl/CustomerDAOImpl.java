@@ -68,13 +68,7 @@ public class CustomerDAOImpl implements CustomerDAO {
 
         ResultSet resultSet = SQLUtil.execute(sql, pattern, pattern, pattern, pattern);
         while (resultSet.next()) {
-            Customer dto = new Customer(
-                    resultSet.getString(1),
-                    resultSet.getString(2),
-                    resultSet.getString(3),
-                    resultSet.getString(4)
-            );
-            dtos.add(dto);
+         dtos.add(new Customer(resultSet.getString("customer_id"), resultSet.getString("name"), resultSet.getString("phone"), resultSet.getString("email")));
         }
         return dtos;
     }

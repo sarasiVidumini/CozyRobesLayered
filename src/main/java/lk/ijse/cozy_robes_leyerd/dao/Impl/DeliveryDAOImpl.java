@@ -59,13 +59,7 @@ public class DeliveryDAOImpl implements DeliveryDAO {
         String pattern = "%" + search + "%";
         ResultSet resultSet = SQLUtil.execute(sql, pattern, pattern, pattern, pattern);
         while (resultSet.next()) {
-            Delivery deliveryDto = new Delivery(
-                    resultSet.getString(1),
-                    resultSet.getString(2),
-                    resultSet.getString(3),
-                    resultSet.getString(4)
-            );
-            dtos.add(deliveryDto);
+           dtos.add(new Delivery(resultSet.getString("delivery_id"), resultSet.getString("order_id"), resultSet.getString("address"), resultSet.getString("status")));
         }
         return dtos;
     }

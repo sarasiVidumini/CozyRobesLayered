@@ -118,10 +118,8 @@ public class ManageUserFormController implements Initializable {
         }
 
 
-        UserDTO userDto = new UserDTO(user_id , role ,name , contact,password);
-
         try {
-            boolean isSaved = userBO.save(userDto);
+            boolean isSaved = userBO.save(new UserDTO(user_id, role, name, contact, password));
             if (isSaved) {
                 new Alert(Alert.AlertType.INFORMATION, "User saved successfully").show();
                 resetPage();
@@ -176,16 +174,9 @@ public class ManageUserFormController implements Initializable {
             return;
         }
 
-        UserDTO userDto = new UserDTO(
-                user_id,
-                role,
-                name,
-                contact,
-                password
-        );
 
         try {
-            boolean isUpdated = userBO.update(userDto);
+            boolean isUpdated = userBO.update(new UserDTO(user_id, role, name, contact, password));
 
             if (isUpdated) {
                 resetPage();

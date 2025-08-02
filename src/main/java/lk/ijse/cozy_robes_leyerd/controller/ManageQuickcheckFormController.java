@@ -116,10 +116,9 @@ public class ManageQuickcheckFormController implements Initializable {
             return;
         }
 
-        QuickcheckDTO quickcheckDto = new QuickcheckDTO(checkId, maintenanceId, checkType, status);
 
         try {
-            boolean isUpdated = quickcheckBO.update(quickcheckDto);
+            boolean isUpdated = quickcheckBO.update(new QuickcheckDTO(checkId,maintenanceId,checkType,status));
             if (isUpdated) {
                 new Alert(Alert.AlertType.INFORMATION, "Check updated successfully").show();
                 resetPage();
@@ -143,10 +142,9 @@ public class ManageQuickcheckFormController implements Initializable {
             return;
         }
 
-        QuickcheckDTO quickcheckDto = new QuickcheckDTO(checkId, maintenanceId, checkType, status);
 
         try {
-            boolean isSaved = quickcheckBO.save(quickcheckDto);
+            boolean isSaved = quickcheckBO.save(new QuickcheckDTO(checkId,maintenanceId,checkType,status));
             if (isSaved) {
                 new Alert(Alert.AlertType.INFORMATION, "Check saved successfully").show();
                 resetPage();

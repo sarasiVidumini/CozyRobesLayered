@@ -69,7 +69,6 @@ public class EmployeeDAOImpl implements EmployeeDAO {
     public ArrayList<Employee> getAll() throws SQLException {
         ResultSet resultSet = SQLUtil.execute("select * from employee");
         ArrayList<Employee> employeeDtoArrayList = new ArrayList<>();
-
         while (resultSet.next()) {
             employeeDtoArrayList.add(new Employee(resultSet.getString(1), resultSet.getString(2), resultSet.getString(3), resultSet.getString(4), resultSet.getDouble(5)));
         }

@@ -124,10 +124,10 @@ public class ManageCustomerFormController implements Initializable {
             return;
         }
 
-        CustomerDTO customerDto = new CustomerDTO(customerId, name, phone, email);
+
 
         try {
-            boolean isSaved = customerBO.save(customerDto);
+            boolean isSaved = customerBO.save(new CustomerDTO(customerId,name,phone,email));
             if (isSaved) {
                 resetPage();
                 new Alert(Alert.AlertType.INFORMATION, "Saved successfully!").show();
@@ -181,10 +181,9 @@ public class ManageCustomerFormController implements Initializable {
             return;
         }
 
-        CustomerDTO customerDto = new CustomerDTO(customerId, name, phone, email);
 
         try {
-            boolean isUpdated = customerBO.update(customerDto);
+            boolean isUpdated = customerBO.update(new CustomerDTO(customerId, name, phone, email));
             if (isUpdated) {
                 resetPage();
                 new Alert(Alert.AlertType.INFORMATION, "Updated successfully!").show();

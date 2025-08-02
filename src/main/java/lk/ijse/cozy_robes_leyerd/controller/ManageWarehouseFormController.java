@@ -120,10 +120,9 @@ public class ManageWarehouseFormController implements Initializable{
             return;
         }
 
-        WarehouseDTO warehouseDto = new WarehouseDTO(sectionId, productId, capacity, location);
 
         try {
-            boolean isUpdated = warehouseBO.update(warehouseDto);
+            boolean isUpdated = warehouseBO.update(new WarehouseDTO(sectionId, productId, capacity, location));
             if (isUpdated) {
                 new Alert(Alert.AlertType.INFORMATION, "Warehouse updated successfully!").show();
                 resetPage();
@@ -140,7 +139,7 @@ public class ManageWarehouseFormController implements Initializable{
         String location = txtLocation.getText();
         int capacity;
 
-        // Validate combo boxes and inputs
+
         if (sectionId == null || productId == null || location.isEmpty() || txtCapacity.getText().isEmpty()) {
             new Alert(Alert.AlertType.ERROR, "Please fill out all fields!").show();
             return;
@@ -153,7 +152,7 @@ public class ManageWarehouseFormController implements Initializable{
             return;
         }
 
-        // Check if the section already exists
+
         boolean sectionExists = tblWarehouse.getItems().stream()
                 .anyMatch(item -> item.getSectionId().equals(sectionId));
         if (sectionExists) {
@@ -161,10 +160,9 @@ public class ManageWarehouseFormController implements Initializable{
             return;
         }
 
-        WarehouseDTO warehouseDto = new WarehouseDTO(sectionId, productId, capacity, location);
 
         try {
-            boolean isSaved = warehouseBO.save(warehouseDto);
+            boolean isSaved = warehouseBO.save(new WarehouseDTO(sectionId, productId, capacity, location));
             if (isSaved) {
                 new Alert(Alert.AlertType.INFORMATION, "Warehouse saved successfully!").show();
                 resetPage();

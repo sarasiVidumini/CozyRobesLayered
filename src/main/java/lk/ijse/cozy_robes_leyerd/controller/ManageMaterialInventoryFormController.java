@@ -113,10 +113,10 @@ public class ManageMaterialInventoryFormController implements Initializable {
             return;
         }
 
-        MaterialInventoryDTO dto = new MaterialInventoryDTO(materialId, supplierId, name, quantity);
+
         if (isNameValid) {
             try {
-                boolean isSaved = materialInventoryBO.save(dto);
+                boolean isSaved = materialInventoryBO.save(new MaterialInventoryDTO(materialId, supplierId, name, quantity));
                 if (isSaved) {
                     new Alert(Alert.AlertType.INFORMATION, "Material saved successfully!").show();
                     loadTableData();
@@ -143,9 +143,9 @@ public class ManageMaterialInventoryFormController implements Initializable {
             return;
         }
 
-        MaterialInventoryDTO dto = new MaterialInventoryDTO(materialId, supplierId, name, quantity);
+
         try{
-            boolean isUpdated = materialInventoryBO.update(dto);
+            boolean isUpdated = materialInventoryBO.update(new MaterialInventoryDTO(materialId, supplierId, name, quantity));
             if (isUpdated) {
                 new Alert(Alert.AlertType.INFORMATION, "Material updated successfully!").show();
                 loadTableData();

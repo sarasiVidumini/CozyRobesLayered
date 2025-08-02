@@ -120,10 +120,8 @@ public class ManageMaintenanceFormController implements Initializable {
             return;
         }
 
-        MaintenanceDTO maintenanceDto = new MaintenanceDTO(maintenanceId, materialId, sectionId, maintenanceDate, maintenanceStatus, cost);
-
         try {
-            boolean isUpdated = maintenanceBO.update(maintenanceDto);
+            boolean isUpdated = maintenanceBO.update(new MaintenanceDTO(maintenanceId, materialId, sectionId, maintenanceDate, maintenanceStatus, cost));
             if (isUpdated) {
                 new Alert(Alert.AlertType.INFORMATION, "Maintenance updated successfully").show();
                 resetPage();
@@ -149,10 +147,9 @@ public class ManageMaintenanceFormController implements Initializable {
             return;
         }
 
-        MaintenanceDTO maintenanceDto = new MaintenanceDTO(maintenanceId, materialId, sectionId, maintenanceDate, maintenanceStatus, cost);
 
         try {
-            boolean isSaved = maintenanceBO.save(maintenanceDto);
+            boolean isSaved = maintenanceBO.save(new MaintenanceDTO(maintenanceId,materialId,sectionId,maintenanceDate, maintenanceStatus, cost));
             if (isSaved) {
                 new Alert(Alert.AlertType.INFORMATION, "Maintenance saved successfully").show();
                 resetPage();

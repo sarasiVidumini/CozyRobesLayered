@@ -113,10 +113,9 @@ public class ManageEmployeeFormController implements Initializable {
             return;
         }
 
-        EmployeeDTO employeeDto = new EmployeeDTO(employeeId, userId, name, role, salary);
 
         try {
-            boolean isUpdated = employeeBO.update(employeeDto);
+            boolean isUpdated = employeeBO.update(new EmployeeDTO(employeeId,userId,name,role,salary));
             if (isUpdated) {
                 new Alert(Alert.AlertType.INFORMATION, "Employee updated successfully").show();
                 resetPage();
@@ -143,12 +142,8 @@ public class ManageEmployeeFormController implements Initializable {
             return;
         }
 
-
-
-        EmployeeDTO employeeDto = new EmployeeDTO(employeeId, userId, name, role, salary);
-
             try {
-                boolean isSaved = employeeBO.save(employeeDto);
+                boolean isSaved = employeeBO.save(new EmployeeDTO(employeeId,userId,name,role,salary));
                 if (isSaved) {
                     new Alert(Alert.AlertType.INFORMATION, "Employee saved successfully").show();
                     resetPage();

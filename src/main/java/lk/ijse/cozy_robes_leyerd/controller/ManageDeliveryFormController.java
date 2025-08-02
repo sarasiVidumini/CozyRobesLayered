@@ -71,13 +71,6 @@ public class ManageDeliveryFormController implements Initializable {
     }
 
     private void loadNextId() throws SQLException, ClassNotFoundException {
-        /*try {
-            String nextId = "D001"; // You can fetch max ID from DB and increment
-            lblDeliveryId.setText(nextId);
-        } catch (Exception e) {
-            e.printStackTrace();
-            new Alert(Alert.AlertType.ERROR, "Failed to generate next Delivery ID").show();
-        }*/
         String deliveryId = deliveryBO.getNextId();
         lblDeliveryId.setText(deliveryId);
 
@@ -118,10 +111,10 @@ public class ManageDeliveryFormController implements Initializable {
             return;
         }
 
-        DeliveryDTO deliveryDto = new DeliveryDTO(deliveryId, orderId, address, status);
+
 
         try {
-            boolean isUpdated = deliveryBO.update(deliveryDto);
+            boolean isUpdated = deliveryBO.update(new DeliveryDTO(deliveryId,orderId,address,status));
             if (isUpdated) {
                 new Alert(Alert.AlertType.INFORMATION, "Delivery updated successfully").show();
                 resetPage();
@@ -145,10 +138,9 @@ public class ManageDeliveryFormController implements Initializable {
             return;
         }
 
-        DeliveryDTO deliveryDto = new DeliveryDTO(deliveryId, orderId, address, status);
 
         try {
-            boolean isSaved = deliveryBO.save(deliveryDto);
+            boolean isSaved = deliveryBO.save(new DeliveryDTO(deliveryId,orderId,address,status));
             if (isSaved) {
                 new Alert(Alert.AlertType.INFORMATION, "Delivery saved successfully").show();
                 resetPage();

@@ -50,7 +50,6 @@ public class ManageSupplierFormController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        // ✅ Correct column mappings
         colSupplierId.setCellValueFactory(new PropertyValueFactory<>("supplierId"));
         colSupplierName.setCellValueFactory(new PropertyValueFactory<>("name"));
         colSupplierAdd.setCellValueFactory(new PropertyValueFactory<>("address"));
@@ -130,10 +129,9 @@ public class ManageSupplierFormController implements Initializable {
             return;
         }
 
-        SupplierDTO supplierDto = new SupplierDTO(supplierId, name, address, contact);
 
         try {
-            boolean isSaved = supplierBO.save(supplierDto);
+            boolean isSaved = supplierBO.save(new SupplierDTO(supplierId,name, address, contact));
             if (isSaved) {
                 resetPage();
                 new Alert(Alert.AlertType.INFORMATION, "Successfully saved supplier.").show();
@@ -162,10 +160,9 @@ public class ManageSupplierFormController implements Initializable {
             return;
         }
 
-        SupplierDTO supplierDto = new SupplierDTO(supplierId, name, address, contact);
 
         try {
-            boolean isUpdated = supplierBO.update(supplierDto);
+            boolean isUpdated = supplierBO.update(new SupplierDTO(supplierId,name, address, contact));
             if (isUpdated) {
                 resetPage();
                 new Alert(Alert.AlertType.INFORMATION, "Successfully updated supplier.").show();

@@ -1,14 +1,196 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="lk.ijse.cozy_robes_leyerd.controller.DashBoardPageController"
-            prefHeight="400.0" prefWidth="600.0">
-
+<AnchorPane fx:id="ancDashBoardPage" prefHeight="800.0" prefWidth="1600.0" style="-fx-background-color: linear-gradient(to right, #FF5F6D, #FFC371);" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.cozy_robes_leyerd.controller.DashBoardPageController">
+    <children>
+        <HBox layoutX="14.0" layoutY="14.0" prefHeight="780.0" prefWidth="1517.0" style="-fx-border-color: #2f3542; -fx-border-radius: 20;" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="73.0" AnchorPane.topAnchor="10.0">
+            <children>
+                <VBox prefHeight="658.0" prefWidth="350.0" style="-fx-border-radius: 20; -fx-background-color: linear-gradient(to right, #FF5F6D, #FFC371); -fx-background-radius: 20; -fx-border-color: #000000;">
+                    <HBox.margin>
+                        <Insets bottom="10.0" left="80.0" right="10.0" top="10.0" />
+                    </HBox.margin>
+                    <children>
+                        <HBox prefHeight="34.0" prefWidth="350.0" style="-fx-background-radius: 20; -fx-border-radius: 20;">
+                            <VBox.margin>
+                                <Insets top="10.0" />
+                            </VBox.margin>
+                            <children>
+                                <Label prefHeight="64.0" prefWidth="270.0" text="COZY ROBES">
+                                    <HBox.margin>
+                                        <Insets left="10.0" />
+                                    </HBox.margin>
+                                    <font>
+                                        <Font name="System Bold" size="43.0" />
+                                    </font>
+                                </Label>
+                            </children>
+                        </HBox>
+                        <VBox prefHeight="684.0" prefWidth="350.0" stylesheets="@../styles/buttonStyles.css">
+                            <VBox.margin>
+                                <Insets top="10.0" />
+                            </VBox.margin>
+                            <children>
+                                <ImageView fitHeight="390.0" fitWidth="309.0" pickOnBounds="true" preserveRatio="true">
+                                    <VBox.margin>
+                                        <Insets left="20.0" top="100.0" />
+                                    </VBox.margin>
+                                    <image>
+                                        <Image url="@../images/8925862_100x80-acrylic-nov-1986.jpg" />
+                                    </image>
+                                </ImageView>
+                            </children>
+                        </VBox>
+                    </children>
+                </VBox>
+                <VBox prefHeight="746.0" prefWidth="969.0" style="-fx-background-color: linear-gradient(to right, #FF5F6D, #FFC371); -fx-background-radius: 20; -fx-border-radius: 20; -fx-border-color: #000000;" HBox.hgrow="NEVER">
+                    <HBox.margin>
+                        <Insets bottom="20.0" left="20.0" right="20.0" top="15.0" />
+                    </HBox.margin>
+                    <children>
+                        <BorderPane prefHeight="62.0" prefWidth="970.0">
+                            <center>
+                                <Label prefHeight="66.0" prefWidth="138.0" text="OVERVIEW" BorderPane.alignment="CENTER">
+                                    <font>
+                                        <Font name="Microsoft YaHei Light" size="26.0" />
+                                    </font>
+                                </Label>
+                            </center>
+                            <left>
+                                <Label onMouseClicked="#GoToLoginPage" text="&gt; BACK" BorderPane.alignment="CENTER">
+                                    <font>
+                                        <Font name="System Italic" size="20.0" />
+                                    </font>
+                                    <BorderPane.margin>
+                                        <Insets left="20.0" />
+                                    </BorderPane.margin>
+                                </Label>
+                            </left></BorderPane>
+                        <HBox prefHeight="100.0" prefWidth="970.0">
+                            <VBox.margin>
+                                <Insets top="20.0" />
+                            </VBox.margin>
+                            <children>
+                                <Button mnemonicParsing="false" onAction="#btnGoUserViewOnAction" styleClass="cur-button" stylesheets="@../styles/buttonStyles.css" text="User">
+                                    <HBox.margin>
+                                        <Insets left="100.0" />
+                                    </HBox.margin>
+                                </Button>
+                                <Button mnemonicParsing="false" onAction="#btnGoEmployeePageOnAction" styleClass="cur-button" stylesheets="@../styles/buttonStyles.css" text="Employee">
+                                    <HBox.margin>
+                                        <Insets left="200.0" />
+                                    </HBox.margin>
+                                </Button>
+                                <Button mnemonicParsing="false" onAction="#btnGoCustomerPageOnAction" styleClass="cur-button" stylesheets="@../styles/buttonStyles.css" text="Customer">
+                                    <HBox.margin>
+                                        <Insets left="200.0" />
+                                    </HBox.margin>
+                                </Button>
+                            </children>
+                        </HBox>
+                        <HBox prefHeight="100.0" prefWidth="970.0">
+                            <VBox.margin>
+                                <Insets top="20.0" />
+                            </VBox.margin>
+                            <children>
+                                <Button mnemonicParsing="false" onAction="#btnGoDeliveryPageOnAction" styleClass="cur-button" stylesheets="@../styles/buttonStyles.css" text="Delivery">
+                                    <HBox.margin>
+                                        <Insets left="100.0" />
+                                    </HBox.margin>
+                                </Button>
+                                <Button mnemonicParsing="false" onAction="#btnGoPaymentPageOnAction" styleClass="cur-button" stylesheets="@../styles/buttonStyles.css" text="Payment">
+                                    <HBox.margin>
+                                        <Insets left="160.0" />
+                                    </HBox.margin>
+                                </Button>
+                                <Button mnemonicParsing="false" onAction="#btnGoWarehouseViewOnAction" styleClass="cur-button" stylesheets="@../styles/buttonStyles.css" text="Warehouse">
+                                    <HBox.margin>
+                                        <Insets left="220.0" />
+                                    </HBox.margin>
+                                </Button>
+                            </children>
+                        </HBox>
+                        <HBox prefHeight="100.0" prefWidth="970.0">
+                            <VBox.margin>
+                                <Insets top="20.0" />
+                            </VBox.margin>
+                            <children>
+                                <Button mnemonicParsing="false" onAction="#btnGoMaintenanceViewOnAction" styleClass="cur-button" stylesheets="@../styles/buttonStyles.css" text="Maintenance">
+                                    <HBox.margin>
+                                        <Insets left="100.0" />
+                                    </HBox.margin>
+                                </Button>
+                                <Button mnemonicParsing="false" onAction="#btnGoQuickcheckPageOnAction" styleClass="cur-button" stylesheets="@../styles/buttonStyles.css" text="Quickcheck">
+                                    <HBox.margin>
+                                        <Insets left="120.0" />
+                                    </HBox.margin>
+                                </Button>
+                                <Button mnemonicParsing="false" onAction="#btnGoMaterialInventoryViewOnAction" styleClass="cur-button" stylesheets="@../styles/buttonStyles.css" text="Material Inventory">
+                                    <HBox.margin>
+                                        <Insets left="200.0" />
+                                    </HBox.margin>
+                                </Button>
+                            </children>
+                        </HBox>
+                        <HBox prefHeight="100.0" prefWidth="970.0">
+                            <VBox.margin>
+                                <Insets top="20.0" />
+                            </VBox.margin>
+                            <children>
+                                <Button mnemonicParsing="false" onAction="#btnGoSupplierViewOnAction" styleClass="cur-button" stylesheets="@../styles/buttonStyles.css" text="Supplier">
+                                    <HBox.margin>
+                                        <Insets left="100.0" />
+                                    </HBox.margin>
+                                </Button>
+                                <Button mnemonicParsing="false" onAction="#btnGoOrderPageOnAction" styleClass="cur-button" stylesheets="@../styles/buttonStyles.css" text="Orders">
+                                    <HBox.margin>
+                                        <Insets left="180.0" />
+                                    </HBox.margin>
+                                </Button>
+                                <Button mnemonicParsing="false" onAction="#btnGoProductPageOnAction" styleClass="cur-button" stylesheets="@../styles/buttonStyles.css" text="Product">
+                                    <HBox.margin>
+                                        <Insets left="230.0" />
+                                    </HBox.margin>
+                                </Button>
+                            </children>
+                        </HBox>
+                        <HBox prefHeight="63.0" prefWidth="962.0">
+                            <VBox.margin>
+                                <Insets top="20.0" />
+                            </VBox.margin>
+                            <children>
+                                <Button mnemonicParsing="false" onAction="#btnGoOrderDetailsPageOnAction" prefHeight="61.0" prefWidth="167.0" styleClass="cur-button" stylesheets="@../styles/buttonStyles.css" text="Order Details">
+                                    <HBox.margin>
+                                        <Insets left="100.0" />
+                                    </HBox.margin>
+                                </Button>
+                                <Button mnemonicParsing="false" onAction="#btnGoCartOnAction" styleClass="cur-newButton" stylesheets="@../styles/buttonStyles.css" text="Order Placement">
+                                    <HBox.margin>
+                                        <Insets left="130.0" />
+                                    </HBox.margin>
+                                </Button>
+                            </children>
+                        </HBox>
+                        <ImageView fitHeight="117.0" fitWidth="193.0" pickOnBounds="true" preserveRatio="true">
+                            <VBox.margin>
+                                <Insets left="840.0" top="-20.0" />
+                            </VBox.margin>
+                            <image>
+                                <Image url="@../images/Luxury_logo_design_converted.png" />
+                            </image>
+                        </ImageView>
+                    </children>
+                </VBox>
+            </children>
+        </HBox>
+    </children>
 </AnchorPane>

@@ -74,5 +74,42 @@ public class CustomerDAOImpl implements CustomerDAO {
     }
 
 
+    public ArrayList<String> getAllCustomerIds() throws SQLException {
+        ResultSet resultSet = SQLUtil.execute("select customer_id from customer");
+        ArrayList<String> list = new ArrayList<>();
+        while (resultSet.next()) {
+            String id = resultSet.getString(1);
+            list.add(id);
+        }
+        return list;
+    }
+
+
+    public String getCustomerIdByContact(String contact) throws SQLException {
+        try {
+            ResultSet resultSet = SQLUtil.execute("select customer_id from customer where phone = ?", contact);
+            if (resultSet.next()) {
+                return resultSet.getString("customer_id");
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+
+        }
+        return "Customer Not found";
+    }
+
+
+    public String getCustomerNameById(String customerId) throws SQLException {
+        try {
+            ResultSet resultSet = SQLUtil.execute("select name from customer where customer_id = ?", customerId);
+            if (resultSet.next()) {
+                return resultSet.getString("name");
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+
+        }
+        return "Customer Not found";
+    }
 
 }

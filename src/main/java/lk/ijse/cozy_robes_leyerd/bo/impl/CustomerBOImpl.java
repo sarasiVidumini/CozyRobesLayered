@@ -5,7 +5,9 @@ import lk.ijse.cozy_robes_leyerd.dao.DAOFactory;
 import lk.ijse.cozy_robes_leyerd.dao.custom.CustomerDAO;
 import lk.ijse.cozy_robes_leyerd.dto.CustomerDTO;
 import lk.ijse.cozy_robes_leyerd.entity.Customer;
+import lk.ijse.cozy_robes_leyerd.util.SQLUtil;
 
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
@@ -55,5 +57,18 @@ public class CustomerBOImpl implements CustomerBO {
         return dtos;
     }
 
+    public ArrayList<String> getAllCustomerIds() throws SQLException {
+        return customerDAO.getAllCustomerIds();
+    }
+
+
+    public String getCustomerIdByContact(String contact) throws SQLException {
+        return customerDAO.getCustomerIdByContact(contact);
+    }
+
+
+    public String getCustomerNameById(String customerId) throws SQLException {
+        return customerDAO.getCustomerNameById(customerId);
+    }
 
 }

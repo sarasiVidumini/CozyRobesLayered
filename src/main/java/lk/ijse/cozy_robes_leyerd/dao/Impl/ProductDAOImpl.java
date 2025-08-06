@@ -1,15 +1,18 @@
 package lk.ijse.cozy_robes_leyerd.dao.Impl;
 
 import javafx.scene.control.Alert;
+import lk.ijse.cozy_robes_leyerd.dao.custom.ProductDAO;
 import lk.ijse.cozy_robes_leyerd.dto.ProductDTO;
+import lk.ijse.cozy_robes_leyerd.entity.Product;
 import lk.ijse.cozy_robes_leyerd.util.SQLUtil;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-public class ProductImpl {
-    public String getNextProductId() throws SQLException {
+public class ProductDAOImpl implements ProductDAO {
+
+    public String getNextId() throws SQLException {
         ResultSet resultSet = SQLUtil.execute("select product_id from product order by product_id desc limit 1");
         char tableCharacter = 'P';
         if (resultSet.next()) {
@@ -23,47 +26,39 @@ public class ProductImpl {
         return tableCharacter +"001";
     }
 
-    public boolean saveProduct(ProductDTO productDto) throws SQLException {
+    public boolean save(Product entity) throws SQLException {
         return SQLUtil.execute(
                 "insert into product values(?,?,?,?,?)",
-                productDto.getProductId(),
-                productDto.getName(),
-                productDto.getQuantity(),
-                productDto.getCategory(),
-                productDto.getUnitPrice()
+                entity.getProductId(),
+                entity.getName(),
+                entity.getQuantity(),
+                entity.getCategory(),
+                entity.getUnitPrice()
         );
     }
 
-    public ArrayList<ProductDTO> getAllProduct() throws SQLException {
+    public ArrayList<Product> getAll() throws SQLException {
         ResultSet resultSet = SQLUtil.execute("select * from product");
-        ArrayList<ProductDTO> productDtoArrayList = new ArrayList<>();
+        ArrayList<Product> productDtoArrayList = new ArrayList<>();
         while (resultSet.next()) {
-            ProductDTO productDto = new ProductDTO(
-                    resultSet.getString(1),
-                    resultSet.getString(2),
-                    resultSet.getInt(3),
-                    resultSet.getString(4),
-                    resultSet.getDouble(5)
-            );
-            productDtoArrayList.add(productDto);
+            productDtoArrayList.add(new Product(resultSet.getString(1), resultSet.getString(2), resultSet.getInt(3), resultSet.getString(4), resultSet.getDouble(5)));
         }
 
         return productDtoArrayList;
     }
 
-    public boolean updateProduct(ProductDTO productDto) throws SQLException {
-        System.out.println(productDto);
+        public boolean update(Product entity) throws SQLException {
         return SQLUtil.execute(
                 "update product set name = ? , quantity = ? , category = ? , unit_price = ? where product_id = ?",
-                productDto.getName(),
-                productDto.getQuantity(),
-                productDto.getCategory(),
-                productDto.getUnitPrice(),
-                productDto.getProductId()
+                entity.getName(),
+                entity.getQuantity(),
+                entity.getCategory(),
+                entity.getUnitPrice(),
+                entity.getProductId()
         );
     }
 
-    public boolean deleteProduct(String product_id) throws SQLException {
+    public boolean delete(String product_id) throws SQLException {
         return SQLUtil.execute(
                 "delete from product where product_id = ?" ,
                 product_id
@@ -72,23 +67,17 @@ public class ProductImpl {
 
     }
 
-    public ArrayList<ProductDTO> searchProduct(String search) throws SQLException {
-        ArrayList<ProductDTO> dtos = new ArrayList<>();
+    public ArrayList<Product> search(String search) throws SQLException {
+        ArrayList<Product> dtos = new ArrayList<>();
         String sql = "select * from product where product_id Like ? OR name LIKE ? OR quantity LIKE ? OR category LIKE ? OR unit_price LIKE ?";
         String pattern = "%" + search + "%";
         ResultSet resultSet = SQLUtil.execute(sql, pattern , pattern, pattern, pattern , pattern);
         while (resultSet.next()) {
-            ProductDTO dto = new ProductDTO(
-                    resultSet.getString(1),
-                    resultSet.getString(2),
-                    resultSet.getInt(3),
-                    resultSet.getString(4),
-                    resultSet.getDouble(5)
-            );
-            dtos.add(dto);
+            dtos.add(new Product(resultSet.getString(1), resultSet.getString(2), resultSet.getInt(3), resultSet.getString(4), resultSet.getDouble(5)));
         }
         return dtos;
     }
+
 
     public ArrayList<String> getAllProductIds() throws SQLException {
         ResultSet resultSet = SQLUtil.execute("select product_id from product");
@@ -147,39 +136,4 @@ public class ProductImpl {
         return false;
     }
 
-    public String getProductNameById(String newVal) throws SQLException {
-        try {
-            ResultSet resultSet = SQLUtil.execute("select name from product where product_id = ?", newVal);
-            if (resultSet.next()) {
-                return resultSet.getString("name");
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-            new Alert(Alert.AlertType.ERROR, "Failed to load product name by ID...").show();
-        }
-
-        return null;
-    }
-
-    public boolean increaseQty(String productId , int quantity) throws SQLException {
-        try {
-            ResultSet resultSet = SQLUtil.execute(
-                    "select quantity from product where product_id = ?",
-                    productId
-            );
-            if (resultSet.next()) {
-                int currentQty = resultSet.getInt("quantity");
-                int newQty = currentQty + quantity;
-                return SQLUtil.execute(
-                        "update product set quantity = ? where product_id = ?",
-                        newQty,
-                        productId
-                );
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-            new Alert(Alert.AlertType.ERROR, "Error increasing product quantity...").show();
-        }
-        return false;
-    }
 }

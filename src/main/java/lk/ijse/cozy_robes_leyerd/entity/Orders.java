@@ -7,15 +7,13 @@ import lombok.*;
 @ToString
 @AllArgsConstructor
 @Builder
-
-public class OrderDetails {
-    private String orderDetailId;
+public class Orders {
     private String orderId;
+    private String customerId;
+    private String orderDate;
+    private String status;
     private String productId;
-    private int quantity;
-    private double priceAtPurchase;
 
-    public OrderDetails(){}
-
+    public Orders(){}
 
 }

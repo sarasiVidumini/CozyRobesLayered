@@ -43,7 +43,6 @@ public class MaterialInventoryDAOImpl implements MaterialInventoryDAO {
         return materialInventoryDtoArrayList;
     }
 
-
     public boolean update(MaterialInventory materialInventoryDto) throws SQLException {
         return SQLUtil.execute(
                 "update material_inventory set supplier_id=? , material_name =? , quantity=? where material_id= ?",

@@ -12,10 +12,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import lk.ijse.cozy_robes_leyerd.bo.BOFactory;
 import lk.ijse.cozy_robes_leyerd.bo.custom.UserBO;
-import lk.ijse.cozy_robes_leyerd.bo.impl.UserBOImpl;
-import lk.ijse.cozy_robes_leyerd.dao.Impl.UserDAOImpl;
 import lk.ijse.cozy_robes_leyerd.dto.UserDTO;
-import lk.ijse.cozy_robes_leyerd.entity.User;
 import lk.ijse.cozy_robes_leyerd.viewTm.UserTM;
 
 import java.io.IOException;

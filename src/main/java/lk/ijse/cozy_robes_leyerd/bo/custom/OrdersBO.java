@@ -1,13 +1,8 @@
 package lk.ijse.cozy_robes_leyerd.bo.custom;
 
 import lk.ijse.cozy_robes_leyerd.bo.SuperBO;
-import lk.ijse.cozy_robes_leyerd.dao.Impl.OrdersDAOImpl;
-import lk.ijse.cozy_robes_leyerd.dao.custom.CustomerDAO;
 import lk.ijse.cozy_robes_leyerd.dto.OrdersDTO;
-import lk.ijse.cozy_robes_leyerd.entity.Orders;
-import lk.ijse.cozy_robes_leyerd.util.SQLUtil;
 
-import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 

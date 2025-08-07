@@ -14,7 +14,6 @@ import lk.ijse.cozy_robes_leyerd.bo.BOFactory;
 import lk.ijse.cozy_robes_leyerd.bo.custom.OrderDetailsBO;
 import lk.ijse.cozy_robes_leyerd.dto.OrderDetailsDTO;
 import lk.ijse.cozy_robes_leyerd.viewTm.OrderDetailsTM;
-import lk.ijse.cozy_robes_leyerd.dao.Impl.OrderDetailsDAOImpl;
 
 import java.io.IOException;
 import java.net.URL;

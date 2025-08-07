@@ -15,14 +15,12 @@ import lk.ijse.cozy_robes_leyerd.bo.BOFactory;
 import lk.ijse.cozy_robes_leyerd.bo.custom.MaterialInventoryBO;
 import lk.ijse.cozy_robes_leyerd.dto.MaterialInventoryDTO;
 import lk.ijse.cozy_robes_leyerd.viewTm.MaterialInventoryTM;
-import lk.ijse.cozy_robes_leyerd.dao.Impl.MaterialInventoryDAOImpl;
 
 
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.List;
 import java.util.Optional;
 import java.util.ResourceBundle;
 

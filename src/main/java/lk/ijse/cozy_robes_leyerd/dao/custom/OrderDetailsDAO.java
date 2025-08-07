@@ -2,9 +2,7 @@ package lk.ijse.cozy_robes_leyerd.dao.custom;
 
 import lk.ijse.cozy_robes_leyerd.dao.CrudDAO;
 import lk.ijse.cozy_robes_leyerd.entity.OrderDetails;
-import lk.ijse.cozy_robes_leyerd.util.SQLUtil;
 
-import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 

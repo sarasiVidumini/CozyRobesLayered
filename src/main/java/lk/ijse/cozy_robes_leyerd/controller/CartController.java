@@ -3,27 +3,20 @@ package lk.ijse.cozy_robes_leyerd.controller;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
-import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
-import javafx.stage.Modality;
-import javafx.stage.Stage;
 import lk.ijse.cozy_robes_leyerd.bo.BOFactory;
 import lk.ijse.cozy_robes_leyerd.bo.custom.CartBO;
 import lk.ijse.cozy_robes_leyerd.db.DBConnection;
-import lk.ijse.cozy_robes_leyerd.dto.CartDTO;
-import lk.ijse.cozy_robes_leyerd.dto.OrdersDTO;
 import lk.ijse.cozy_robes_leyerd.dto.PaymentDTO;
 import lk.ijse.cozy_robes_leyerd.dto.ProductDTO;
 import lk.ijse.cozy_robes_leyerd.viewTm.CartTM;
-import lk.ijse.cozy_robes_leyerd.dao.Impl.*;
-import lk.ijse.cozy_robes_leyerd.util.OrderReportMailer;
+import lk.ijse.cozy_robes_leyerd.controller.util.OrderReportMailer;
 
 
 import java.net.URL;

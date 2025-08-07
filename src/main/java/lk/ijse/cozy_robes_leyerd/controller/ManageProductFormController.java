@@ -1,7 +1,6 @@
 package lk.ijse.cozy_robes_leyerd.controller;
 
 import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -13,12 +12,8 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import lk.ijse.cozy_robes_leyerd.bo.BOFactory;
 import lk.ijse.cozy_robes_leyerd.bo.custom.ProductBO;
-import lk.ijse.cozy_robes_leyerd.dto.CustomerDTO;
 import lk.ijse.cozy_robes_leyerd.dto.ProductDTO;
-import lk.ijse.cozy_robes_leyerd.viewTm.CustomerTM;
-import lk.ijse.cozy_robes_leyerd.viewTm.MaintenanceTM;
 import lk.ijse.cozy_robes_leyerd.viewTm.ProductTM;
-import lk.ijse.cozy_robes_leyerd.dao.Impl.ProductDAOImpl;
 
 import java.io.IOException;
 import java.net.URL;

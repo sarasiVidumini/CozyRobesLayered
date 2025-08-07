@@ -13,9 +13,7 @@ import javafx.scene.layout.AnchorPane;
 import lk.ijse.cozy_robes_leyerd.bo.BOFactory;
 import lk.ijse.cozy_robes_leyerd.bo.custom.WarehouseBO;
 import lk.ijse.cozy_robes_leyerd.dto.WarehouseDTO;
-import lk.ijse.cozy_robes_leyerd.entity.Warehouse;
 import lk.ijse.cozy_robes_leyerd.viewTm.WarehouseTM;
-import lk.ijse.cozy_robes_leyerd.dao.Impl.WarehouseDAOImpl;
 
 import java.io.IOException;
 import java.net.URL;

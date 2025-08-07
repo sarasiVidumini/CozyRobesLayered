@@ -13,9 +13,7 @@ import javafx.scene.layout.AnchorPane;
 import lk.ijse.cozy_robes_leyerd.bo.BOFactory;
 import lk.ijse.cozy_robes_leyerd.bo.custom.PaymentBO;
 import lk.ijse.cozy_robes_leyerd.dto.PaymentDTO;
-import lk.ijse.cozy_robes_leyerd.entity.Payment;
 import lk.ijse.cozy_robes_leyerd.viewTm.PaymentTM;
-import lk.ijse.cozy_robes_leyerd.dao.Impl.PaymentDAOImpl;
 
 import java.io.IOException;
 import java.net.URL;
@@ -23,8 +21,6 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Optional;
 import java.util.ResourceBundle;
-import java.util.stream.Collectors;
-import java.util.stream.IntStream;
 
 public class ManagePaymentFormController implements Initializable {
 

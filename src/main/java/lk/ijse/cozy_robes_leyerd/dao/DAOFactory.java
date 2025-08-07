@@ -1,8 +1,6 @@
 package lk.ijse.cozy_robes_leyerd.dao;
 
-import lk.ijse.cozy_robes_leyerd.dao.Impl.*;
-import lk.ijse.cozy_robes_leyerd.dao.custom.CustomerDAO;
-import org.apache.commons.beanutils.PropertyUtilsBean;
+import lk.ijse.cozy_robes_leyerd.dao.custom.Impl.*;
 
 public class DAOFactory {
     private static DAOFactory daoFactory;

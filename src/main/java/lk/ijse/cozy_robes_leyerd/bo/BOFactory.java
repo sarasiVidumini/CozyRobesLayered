@@ -1,7 +1,6 @@
 package lk.ijse.cozy_robes_leyerd.bo;
 
-import lk.ijse.cozy_robes_leyerd.bo.custom.CustomerBO;
-import lk.ijse.cozy_robes_leyerd.bo.impl.*;
+import lk.ijse.cozy_robes_leyerd.bo.custom.impl.*;
 
 public class BOFactory {
     private static BOFactory boFactory;

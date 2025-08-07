@@ -2,9 +2,7 @@ package lk.ijse.cozy_robes_leyerd.bo.custom;
 
 import lk.ijse.cozy_robes_leyerd.bo.SuperBO;
 import lk.ijse.cozy_robes_leyerd.dto.CustomerDTO;
-import lk.ijse.cozy_robes_leyerd.util.SQLUtil;
 
-import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 

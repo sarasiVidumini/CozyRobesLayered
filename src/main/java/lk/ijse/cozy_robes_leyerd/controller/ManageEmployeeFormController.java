@@ -13,9 +13,7 @@ import javafx.scene.input.MouseEvent;
 import lk.ijse.cozy_robes_leyerd.bo.BOFactory;
 import lk.ijse.cozy_robes_leyerd.bo.custom.EmployeeBO;
 import lk.ijse.cozy_robes_leyerd.dto.EmployeeDTO;
-import lk.ijse.cozy_robes_leyerd.entity.Employee;
 import lk.ijse.cozy_robes_leyerd.viewTm.EmployeeTM;
-import lk.ijse.cozy_robes_leyerd.dao.Impl.EmployeeDAOImpl;
 
 import java.io.IOException;
 import java.net.URL;

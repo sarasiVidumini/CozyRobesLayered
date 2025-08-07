@@ -11,14 +11,10 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
-import jdk.swing.interop.DropTargetContextWrapper;
 import lk.ijse.cozy_robes_leyerd.bo.BOFactory;
 import lk.ijse.cozy_robes_leyerd.bo.custom.OrdersBO;
-import lk.ijse.cozy_robes_leyerd.bo.impl.OrdersBOImpl;
 import lk.ijse.cozy_robes_leyerd.dto.OrdersDTO;
-import lk.ijse.cozy_robes_leyerd.entity.Orders;
 import lk.ijse.cozy_robes_leyerd.viewTm.OrdersTM;
-import lk.ijse.cozy_robes_leyerd.dao.Impl.OrdersDAOImpl;
 
 import java.io.IOException;
 import java.net.URL;
@@ -28,8 +24,6 @@ import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Optional;
 import java.util.ResourceBundle;
-import java.util.stream.Collectors;
-import java.util.stream.IntStream;
 
 public class ManageOrdersFormController implements Initializable{
 //    private final OrderModel orderModel = new OrderModel();

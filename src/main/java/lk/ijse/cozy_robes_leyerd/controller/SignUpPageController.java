@@ -12,8 +12,7 @@ import javafx.scene.layout.AnchorPane;
 import lk.ijse.cozy_robes_leyerd.bo.BOFactory;
 import lk.ijse.cozy_robes_leyerd.bo.custom.UserBO;
 import lk.ijse.cozy_robes_leyerd.dto.UserDTO;
-import lk.ijse.cozy_robes_leyerd.dao.Impl.UserDAOImpl;
-import lk.ijse.cozy_robes_leyerd.util.SQLUtil;
+import lk.ijse.cozy_robes_leyerd.controller.util.SQLUtil;
 
 import java.io.IOException;
 import java.sql.ResultSet;

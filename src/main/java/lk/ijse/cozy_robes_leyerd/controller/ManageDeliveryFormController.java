@@ -14,9 +14,7 @@ import javafx.scene.input.MouseEvent;
 import lk.ijse.cozy_robes_leyerd.bo.BOFactory;
 import lk.ijse.cozy_robes_leyerd.bo.custom.DeliveryBO;
 import lk.ijse.cozy_robes_leyerd.dto.DeliveryDTO;
-import lk.ijse.cozy_robes_leyerd.entity.Delivery;
 import lk.ijse.cozy_robes_leyerd.viewTm.DeliveryTM;
-import lk.ijse.cozy_robes_leyerd.dao.Impl.DeliveryDAOImpl;
 
 import java.io.IOException;
 import java.net.URL;
@@ -24,8 +22,6 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Optional;
 import java.util.ResourceBundle;
-import java.util.stream.Collectors;
-import java.util.stream.IntStream;
 
 public class ManageDeliveryFormController implements Initializable {
     public AnchorPane ancDeliveryPage;

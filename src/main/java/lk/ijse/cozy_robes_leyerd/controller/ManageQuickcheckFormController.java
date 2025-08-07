@@ -14,7 +14,6 @@ import lk.ijse.cozy_robes_leyerd.bo.BOFactory;
 import lk.ijse.cozy_robes_leyerd.bo.custom.QuickcheckBO;
 import lk.ijse.cozy_robes_leyerd.dto.QuickcheckDTO;
 import lk.ijse.cozy_robes_leyerd.viewTm.QuickcheckTM;
-import lk.ijse.cozy_robes_leyerd.dao.Impl.QuickcheckDAOImpl;
 
 import java.io.IOException;
 import java.net.URL;

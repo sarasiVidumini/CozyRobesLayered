@@ -218,7 +218,7 @@
                                 <Insets left="700.0" top="5.0" />
                             </VBox.margin>
                             <image>
-                                <Image url="@../images/ChatGPT%20Image%20May%2013,%202025,%2003_01_22%20PM.png" />
+                                <Image url="@../images/ChatGPT Image May 13, 2025, 03_01_22 PM.png" />
                             </image>
                         </ImageView>
                         <TableView fx:id="tblOrders" onMouseClicked="#onClickTable" prefHeight="464.0" prefWidth="930.0">
